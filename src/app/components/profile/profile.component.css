@@ -1,0 +1,79 @@
+/* ProfileComponent Styling */
+
+.profile-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #3e3e3e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .profile-container h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .profile-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .profile-container label {
+    font-size: 14px;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  .profile-container input[type="text"],
+  .profile-container input[type="password"] {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .profile-container .error {
+    color: #d9534f;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-container button[type="submit"],
+  .profile-container button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 0.3s;
+  }
+  
+  .profile-container button[type="submit"] {
+    background-color: #007bff;
+  }
+  
+  .profile-container button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .profile-container button:not([type="submit"]) {
+    background-color: #28a745;
+    margin-top: 20px;
+  }
+  
+  .profile-container button:not([type="submit"]):hover {
+    background-color: #218838;
+  }
+  
+  .profile-container div p {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+  }
+  

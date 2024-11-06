@@ -1,0 +1,56 @@
+<div class="add-post-container">
+  <h2>Add New Post</h2>
+  <form (ngSubmit)="addPost()">
+    <!-- Choose Image Type -->
+    <div>
+      <label for="imageOption">Choose Image Source:</label>
+      <select [(ngModel)]="imageSource" name="imageSource" id="imageSource">
+        <option value="url">Image URL</option>
+        <option value="file">Upload Image</option>
+      </select>
+    </div>
+
+    <!-- Image URL input field -->
+    <div *ngIf="imageSource === 'url'">
+      <label for="imageUrl">Image URL:</label>
+      <input
+        type="text"
+        id="imageUrl"
+        [(ngModel)]="imageUrl"
+        name="imageUrl"
+        placeholder="Enter image URL"
+        required
+      />
+    </div>
+
+    <!-- File input field -->
+    <div *ngIf="imageSource === 'file'">
+      <label for="image">Select Image:</label>
+      <input
+        type="file"
+        id="image"
+        (change)="onImageSelected($event)"
+        accept="image/*"
+        required
+      />
+    </div>
+
+    <!-- Image Preview -->
+    <div *ngIf="imageUrl">
+      <img [src]="imageUrl" alt="Image preview" class="image-preview" />
+    </div>
+
+    <!-- Caption input -->
+    <div>
+      <label for="caption">Image Title:</label>
+      <input
+        type="text"
+        id="caption"
+        [(ngModel)]="caption"
+        name="caption"
+      />
+    </div>
+
+    <button type="submit">Add Post</button>
+  </form>
+</div>

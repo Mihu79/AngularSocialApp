@@ -1,0 +1,29 @@
+<div *ngFor="let post of posts" class="post-card">
+  <img [src]="post.imageUrl" alt="Post Image" />
+  <p>{{ post.caption }}</p>
+  <p>Posted by: {{ post.username }}</p>
+  
+  <div class="button-group">
+    <button (click)="deletePost(post.id)" *ngIf="currentUser?.id === post.userId">Delete Post</button>
+    <button (click)="likePost(post.id)">
+      {{ post.likes.includes(currentUser?.id ?? -1) ? 'Unlike' : 'Like' }} ({{ post.likes.length }})
+    </button>
+  </div>
+
+  <div class="comments-section">
+    <h4>Comments ({{ post.comments.length }})</h4>
+    <div *ngFor="let comment of post.comments" class="comment">
+      <p><strong>{{ comment.username }}:</strong> {{ comment.text }}</p>
+    </div>
+    <form (ngSubmit)="addComment(post.id)">
+      <input
+        type="text"
+        [(ngModel)]="commentText"
+        name="commentText"
+        placeholder="Add a comment..."
+        required
+      />
+      <button type="submit">Post</button>
+    </form>
+  </div>
+</div>
