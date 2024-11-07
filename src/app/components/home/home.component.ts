@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   posts: Post[] = [];
   currentUser: User | null = null;
   commentText: string = '';
+  showComments: { [postId: number]: boolean } = {};
 
   constructor(private postService: PostService, private userService: UserService) {}
 
@@ -48,6 +49,10 @@ export class HomeComponent implements OnInit {
       this.postService.deletePost(postId);
       this.loadPosts();
     }
+  }
+
+  toggleComments(postId: number) {
+    this.showComments[postId] = !this.showComments[postId];
   }
 
   addComment(postId: number) {
