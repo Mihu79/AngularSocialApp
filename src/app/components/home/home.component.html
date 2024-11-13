@@ -14,6 +14,10 @@
     <button *ngIf="currentUser?.id === post.userId" class="delete-button" (click)="deletePost(post.id)">
       🗑️
     </button>
+
+    <button *ngIf="currentUser?.id === post.userId" class="private-button" (click)="togglePostPrivacy(post.id)">
+      {{ post.private ? 'Make Public' : 'Make Private' }}
+    </button>
   </div>
   
 

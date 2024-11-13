@@ -41,6 +41,7 @@ export class AddPostComponent {
         userId: this.currentUser.id,
         imageUrl: this.imageUrl, // Using the selected image URL
         caption: this.caption,
+        private: false, // Default is public
         likes: [],
         comments: [],
         username: this.currentUser.username,

@@ -145,6 +145,18 @@ body {
   transform: scale(1.1); /* Slightly enlarges on hover */
 }
 
+.private-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: transform 0.2s;
+}
+
+.private-button:hover {
+  transform: scale(1.1); /* Slightly enlarges on hover */
+}
+
 .liked {
   color: #ff4d4d; /* Filled heart color */
 }

@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 
 export interface Post {
-username: any;
   id: number;
   userId: number;
   imageUrl: string;
   caption: string;
-  likes: number[]; // Array of user IDs who liked the post
-  comments: {
-username: any; userId: number; text: string 
-}[];
+  private: boolean; // Privacy flag
+  likes: number[];
+  comments: { username: string; userId: number; text: string }[];
+  username: string;
 }
 
 @Injectable({
@@ -20,31 +19,46 @@ export class PostService {
 
   constructor() {}
 
-  // Retrieve all posts from localStorage
-  getPosts(): Post[] {
+  // Retrieve posts, showing private posts only to the creator
+  getPosts(currentUserId: number): Post[] {
     const postsJson = localStorage.getItem(this.POST_KEY);
-    return postsJson ? JSON.parse(postsJson) : [];
+    let posts: Post[] = postsJson ? JSON.parse(postsJson) : [];
+
+    // Show private posts only to the creator and all public posts
+    return posts.filter(post => !post.private || post.userId === currentUserId);
   }
 
-  // Add a new post to localStorage
+  // Add a new post
   addPost(post: Post): void {
-    const posts = this.getPosts();
-    posts.push(post);
-    localStorage.setItem(this.POST_KEY, JSON.stringify(posts));
+    const posts = this.getPosts(post.userId); // Get posts for the user
+    posts.push(post); // Add the new post
+    localStorage.setItem(this.POST_KEY, JSON.stringify(posts)); // Save updated posts
   }
 
-  // Delete a post by its ID
+  // Delete a post by ID
   deletePost(postId: number): void {
-    let posts = this.getPosts();
-    posts = posts.filter((post) => post.id !== postId);
-    localStorage.setItem(this.POST_KEY, JSON.stringify(posts));
+    let posts: Post[] = this.getPosts(0); // Get all posts
+    posts = posts.filter(post => post.id !== postId); // Remove the post
+    localStorage.setItem(this.POST_KEY, JSON.stringify(posts)); // Save updated posts
   }
 
-  // Update an existing post
+  // Update an existing post (used to update privacy and other post details)
   updatePost(updatedPost: Post): void {
-    const posts = this.getPosts().map((post) =>
-      post.id === updatedPost.id ? updatedPost : post
-    );
+    let posts: Post[] = this.getPosts(0); // Get all posts
+    posts = posts.map(post => (post.id === updatedPost.id ? updatedPost : post)); // Update post
+    localStorage.setItem(this.POST_KEY, JSON.stringify(posts)); // Save updated posts
+  }
+
+  // Toggle the privacy of a post (private to public or vice versa)
+  togglePrivacy(postId: number, currentUserId: number): void {
+    let posts: Post[] = this.getPosts(currentUserId); // Get posts for the current user
+    const post = posts.find(p => p.id === postId); // Find the post by ID
+
+    if (post) {
+      post.private = !post.private; // Toggle the privacy flag
+      this.updatePost(post); // Save the updated post in localStorage
+    }
     localStorage.setItem(this.POST_KEY, JSON.stringify(posts));
   }
+  
 }
