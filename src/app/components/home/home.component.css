@@ -28,7 +28,7 @@ body {
 .post-card {
   width: 60%; /* Adjust width as necessary */
   max-width: 600px; /* Maximum width to prevent the cards from getting too wide */
-  background-color: #494949;
+  background-color: #484032;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
