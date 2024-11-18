@@ -48,7 +48,7 @@ export class ProfileComponent {
   }
 
   logout() {
-    this.userService.logout();
+    localStorage.removeItem('currentUser');
     alert('Logged out successfully.');
   }
 

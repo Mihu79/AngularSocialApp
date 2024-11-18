@@ -33,7 +33,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
   overflow: hidden;
-  margin: 15px 620px; /* Space between cards */
+  margin: 15px auto; /* Space between cards */
 }
 
 /* Post card image styling */
