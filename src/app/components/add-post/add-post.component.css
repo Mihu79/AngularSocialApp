@@ -1,19 +1,23 @@
 /* AddPostComponent Styling */
 
 .add-post-container {
-  background-color: #515151;
+  background: transparent;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 4px solid #ffd572;
+  border-radius: 16px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.1);
   max-width: 500px;
   margin: 20px auto;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
 }
 
 .add-post-container h2 {
-  font-size: 20px;
+  font-size: 24px;
   color: #ffffff;
   margin-bottom: 16px;
   text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .add-post-container form {
@@ -23,7 +27,7 @@
 
 .add-post-container label {
   font-size: 14px;
-  color: #ffffff;
+  color: #f0f0f0;
   margin-bottom: 6px;
 }
 
@@ -35,40 +39,52 @@
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  margin-bottom: 20px; /* Space between inputs */
+  width: 100%; /* Ensure inputs stretch fully */
+  max-width: 600px; /* Optional: Set a max width */
   margin-bottom: 16px;
+  background: #ffffff; /* Simple white background */
+  color: #333; /* Dark text for better contrast */
+  transition: border-color 0.3s;
 }
 
 .add-post-container input[type="file"] {
   padding: 8px;
 }
 
+.add-post-container input[type="text"]:focus,
+.add-post-container input[type="file"]:focus,
+.add-post-container select:focus,
+.add-post-container textarea:focus {
+  outline: none;
+  border-color: rgba(255, 213, 114, 1); /* Light glow effect */
+}
+
 .add-post-container select {
   padding: 10px;
   font-size: 14px;
-  color: #555;
+  color: #333;
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: #fff;
 }
 
-.add-post-container select:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
 .add-post-container button[type="submit"] {
-  padding: 10px 15px;
-  background-color: #28a745;
+  padding: 12px 18px;
+  background: rgb(130, 142, 233);
   color: #ffffff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(130, 142, 233, 0.5);
 }
 
 .add-post-container button[type="submit"]:hover {
-  background-color: #218838;
+  background: rgba(255, 213, 114, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 213, 114, 0.7);
 }
 
 .image-preview {
@@ -76,20 +92,17 @@
   max-width: 500px;
   height: auto;
   margin-top: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
   display: block;
-}
-
-.add-post-container select,
-.add-post-container input[type="text"],
-.add-post-container input[type="file"] {
-  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .add-post-container .image-preview img {
   width: 100%;
   max-width: 100%;
-  border-radius: 4px;
+  border-radius: 8px;
   margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
